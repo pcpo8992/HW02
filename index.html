@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <title>D3 Course HW02</title>
+</head>
+
+<body>
+    <h1>Hw2-1</h1>
+    <script>
+        var svg = d3.select("body")
+            .append("svg")
+            .attr({
+                "width": 300,
+                "height": 200
+            })
+            .style({
+                border: "1px solid black"
+            });
+
+        svg.append("circle")
+            .attr({
+                "cx": 150,
+                "cy": 120,
+                "r": 15,
+                "fill": "black"
+            });
+
+        svg.append("rect")
+            .attr({
+                "x": 160,
+                "y": 45,
+                "width": 5,
+                "height": 78,
+                "fill": "black"
+            });
+
+        for (var row = 0; row < 5; row++) {
+            svg.append("line")
+                .attr({
+                    "x1": 0,
+                    "y1": 45 + 30 * row,
+                    "x2": 300,
+                    "y2": 45 + 30 * row,
+                    "stroke": "black",
+
+                });
+        }
+
+        svg.append("text")
+            .attr({
+                "x": 140,
+                "y": 200,
+                "font-size": 35
+            })
+            .text("A");
+    </script>
+</body>
+
+</html>
