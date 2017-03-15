@@ -9,18 +9,18 @@
 
 <body>
     <h1>Hw2-1</h1>
+    <svg class="svg1"></svg>
     <script>
-        var svg = d3.select("body")
-            .append("svg")
+        var svg1 = d3.select(".svg1")
             .attr({
                 "width": 300,
                 "height": 200
             })
             .style({
-                border: "1px solid black"
+                border: "1px solid #6666dd"
             });
 
-        svg.append("circle")
+        svg1.append("circle")
             .attr({
                 "cx": 150,
                 "cy": 120,
@@ -28,7 +28,7 @@
                 "fill": "black"
             });
 
-        svg.append("rect")
+        svg1.append("rect")
             .attr({
                 "x": 160,
                 "y": 45,
@@ -38,7 +38,7 @@
             });
 
         for (var row = 0; row < 5; row++) {
-            svg.append("line")
+            svg1.append("line")
                 .attr({
                     "x1": 0,
                     "y1": 45 + 30 * row,
@@ -49,13 +49,109 @@
                 });
         }
 
-        svg.append("text")
+        svg1.append("text")
             .attr({
-                "x": 140,
+                "x": 138,
                 "y": 200,
                 "font-size": 35
             })
             .text("A");
+
+    </script>
+    <hr>
+
+    <h1>Hw2-2</h1>
+    <svg class="svg-2"></svg>
+    <script>
+        var svg2 = d3.select(".svg-2")
+            .attr({
+                "width": 400,
+                "height": 300
+            });
+
+        for (var row = 0; row < 20; row++) {
+            var num = Random(300, 20);
+            svg2.append("rect")
+                .attr({
+                    "x": 0,
+                    "y": 0 + 12 * row,
+                    "width": num,
+                    "height": 10,
+                    "fill": "red"
+                });
+
+            svg2.append("text")
+                .attr({
+                    "x": num + 15,
+                    "y": 10 + 12 * row,
+                    "font-size": 12
+                })
+                .style({
+                    color: "black"
+                })
+                .text(num);
+        }
+
+
+        function Random(M, n) {
+            return Math.ceil(Math.random() * (M - n) + n);
+        }
+
+    </script>
+
+    <hr>
+    <h1>Hw2-3</h1>
+    <svg class="svg-3"></svg>
+    <script>
+        var svg3 = d3.select(".svg-3")
+            .attr({
+                "width": 400,
+                "height": 300
+            });
+
+        var lastX = 0;
+        var lastY = 0;
+        for (var row = 0; row < 20; row++) {
+
+            var num = Random(300, 20);
+            svg3.append("circle")
+                .attr({
+                    "cx": num,
+                    "cy": 5 + (12 * (row + 1)),
+                    "r": 3,
+                    "fill": "blue"
+                });
+
+            svg3.append("text")
+                .attr({
+                    "x": num + 15,
+                    "y": 8 + (12 * (row + 1)),
+                    "font-size": 10
+                })
+                .text(num);
+
+            svg3.append("line")
+                .attr({
+                    "x1": 0 + lastX,
+                    "y1": 5 + (12 * row),
+                    "x2": num,
+                    "y2": 5 + (12 * (row + 1)),
+                    "stroke": "red  "
+                });
+
+            lastX = num;
+            lastY = 5 + (12 * (row + 1));
+        }
+
+        svg3.append("line")
+            .attr({
+                "x1": lastX,
+                "y1": lastY,
+                "x2": 0,
+                "y2": lastY + 5,
+                "stroke": "red"
+            });
+
     </script>
 </body>
 
