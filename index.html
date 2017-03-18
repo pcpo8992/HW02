@@ -56,7 +56,6 @@
                 "font-size": 35
             })
             .text("A");
-
     </script>
     <hr>
 
@@ -96,7 +95,6 @@
         function Random(M, n) {
             return Math.ceil(Math.random() * (M - n) + n);
         }
-
     </script>
 
     <hr>
@@ -151,7 +149,40 @@
                 "y2": lastY + 5,
                 "stroke": "red"
             });
+    </script>
 
+    <hr>
+    <h1>Hw2-4</h1>
+    <svg class="svg-4"></svg>
+    <script>
+        d3.json("invoice-taipei.json", function(dataSet) {
+            var svg4 = d3.select(".svg-4")
+                .attr({
+                    "width": 500,
+                    "height": 300
+                });
+            var count = 0;
+            for (var n = 0; n < dataSet.length; n++) {
+                if (dataSet[n].amount > 1000000000 && dataSet[n].cid == "A" && dataSet[n].date == "2016/8/1") {
+                    svg4.append("text")
+                        .attr({
+                            "x": 0,
+                            "y": 18 + 12 * count,
+                            "font-size": 10
+                        })
+                        .text(dataSet[n].industry);
+                    svg4.append("rect")
+                        .attr({
+                            "x": 160,
+                            "y": 10 + 12 * count,
+                            "width": dataSet[n].amount / 100000000,
+                            "height": 10,
+                            "fill": "red"
+                        });
+                    count += 1;
+                };
+            };
+        });
     </script>
 </body>
 
