@@ -96,8 +96,8 @@
             return Math.ceil(Math.random() * (M - n) + n);
         }
     </script>
-
     <hr>
+
     <h1>Hw2-3</h1>
     <svg class="svg-3"></svg>
     <script>
@@ -150,8 +150,8 @@
                 "stroke": "red"
             });
     </script>
-
     <hr>
+
     <h1>Hw2-4</h1>
     <svg class="svg-4"></svg>
     <script>
@@ -159,7 +159,7 @@
             var svg4 = d3.select(".svg-4")
                 .attr({
                     "width": 500,
-                    "height": 300
+                    "height": 200
                 });
             var count = 0;
             for (var n = 0; n < dataSet.length; n++) {
@@ -183,6 +183,52 @@
                 };
             };
         });
+    </script>
+    <hr>
+
+    <h1>Hw2-5</h1>
+    <div class="hw2-5"></div>
+    <script>
+        d3.select(".hw2-5")
+            .attr({
+                "width": 400,
+                "height": 200
+            });
+
+        var arr = [85, 60, 99, 49, 77, 82];
+
+        bind(arr);
+        render();
+
+
+        function bind(data) {
+            var selection = d3.select(".hw2-5")
+                .selectAll("div")
+                .data(data);
+
+            selection.enter()
+                .append("div");
+
+            selection.exit()
+                .remove();
+        };
+
+        function render() {
+            d3.select(".hw2-5")
+                .selectAll("div")
+                .text(function(data, i) {
+                    return i + 1 + ":" + data;
+                })
+                .style({
+                    "color": function(data) {
+                        if (data < 70) {
+                            return "red";
+                        } else {
+                            return "black";
+                        }
+                    }
+                })
+        };
     </script>
 </body>
 
